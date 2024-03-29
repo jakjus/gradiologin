@@ -1,14 +1,12 @@
-from starlette.requests import Request
-from authlib.integrations.starlette_client import OAuth
 import json
 import gradio
 from starlette.middleware.sessions import SessionMiddleware
-from starlette.responses import HTMLResponse, RedirectResponse
-from routes import add_routes
-from middleware import add_middleware_redirect
+from gradiologin.routes import add_routes
+from gradiologin.oauth import oauth
+from gradiologin.middleware import add_middleware_redirect
+
 
 def init(app, secret_key="some-secret-string", app_route='gradio'):
-    oauth = OAuth()
     add_middleware_redirect(app, app_route)
     add_routes(app, app_route)
     app.add_middleware(SessionMiddleware, secret_key=secret_key)

@@ -1,3 +1,7 @@
+from starlette.requests import Request
+from starlette.responses import RedirectResponse
+
+
 def add_middleware_redirect(app, app_route):
     @app.middleware("http")
     async def check_authentication(request: Request, call_next):
