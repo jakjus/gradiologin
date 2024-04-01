@@ -1,14 +1,19 @@
 # Gradio Login
-OAuth login for Gradio. Currently supports only Google OAuth.
+OAuth Login for Gradio. Currently supports only Google OAuth.
 
 ## Installation
 ```
 pip install gradiologin
 ```
 ## Getting Started
-1. Register a new OAuth app in Google Developer Dashboard
+### OAuth App registration
+Go to [Google Developer Console](https://console.cloud.google.com/)
+1. *New Project > Create*
+2. *APIs & Services > OAuth consent screen > External > Create*. Fill required fields.
+3. *APIs & Services > Credentials > Create Credentials > OAuth Client ID*. Application type: Web application. Authorized JavaScript origins: `http://localhost:8000` for development. Authorized redirect URIs: `http://localhost:8000/login`, `http://localhost:8000/auth`. In production, change `http://localhost:8000` to your domain name. Save `client_id` and `client_secret`
 
-2. Use below code with your own client_id and client_secret
+### Gradiologin code
+1. Use below code with your `client_id` and `client_secret`
 ```python3
 # app.py
 
@@ -41,4 +46,4 @@ with gr.Blocks() as demo:
 gradio_app = gl.mount_gradio_app(app, demo, "/app")
 ```
 
-3. Host locally with `uvicorn app:app`
+2. Host locally with `uvicorn app:app`
