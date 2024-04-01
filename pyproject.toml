@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gradiologin"
+version = "0.0.1"
+description = "OAuth Login for Gradio"
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+dependencies = [
+    "gradio"
+]
+keywords = ["gradio", "login", "oauth", "authorization", "authentication", "auth"]
+
+[project.urls]
+Homepage = "https://github.com/jakjus/gradiologin"
