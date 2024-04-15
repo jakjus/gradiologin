@@ -9,9 +9,7 @@ description = "OAuth Login for Gradio"
 requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}
-dependencies = [
-    "gradio"
-]
+dependencies = ["gradio >= 4.24", "authlib", "itsdangerous"]
 keywords = ["gradio", "login", "oauth", "authorization", "authentication", "auth"]
 
 [project.urls]

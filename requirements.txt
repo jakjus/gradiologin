@@ -1,0 +1,3 @@
+gradio>=4.24
+authlib
+itsdangerous
