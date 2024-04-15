@@ -15,7 +15,7 @@ pip install gradiologin
 
 ## Getting Started
 ### Example Code
-1. Use below code with your own Google OAuth `client_id` and `client_secret` (if you don't have it, go to [OAuth App Registration](#OAuth App Registration) section)
+1. Use below code with your own Google OAuth `client_id` and `client_secret` (if you don't have it, go to [OAuth App Registration](#oauth-app-registration))
 
 ```python3
 # app.py
