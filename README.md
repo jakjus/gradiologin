@@ -1,6 +1,10 @@
 # Gradio Login
 OAuth Login for Gradio. Currently supports only Google OAuth.
+
+## Example App
+OAuth Popup
 ![Example 1](/screenshots/0_oauth.png)
+Logged in view
 ![Example 2](/screenshots/1_app.png)
 
 
@@ -11,7 +15,7 @@ pip install gradiologin
 
 ## Getting Started
 ### Example Code
-1. Use below code with your own Google OAuth `client_id` and `client_secret` (if you don't have it, go to [OAuth App Registration](### OAuth App Registration) section)
+1. Use below code with your own Google OAuth `client_id` and `client_secret` (if you don't have it, go to [OAuth App Registration](#OAuth App Registration) section)
 
 ```python3
 # app.py
