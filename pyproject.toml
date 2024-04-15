@@ -12,5 +12,8 @@ license = {text = "MIT"}
 dependencies = ["gradio >= 4.24", "authlib", "itsdangerous"]
 keywords = ["gradio", "login", "oauth", "authorization", "authentication", "auth"]
 
+[tool.setuptools.packages.find]
+exclude = ["screenshots"]
+
 [project.urls]
 Homepage = "https://github.com/jakjus/gradiologin"
