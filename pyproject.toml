@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gradiologin"
-version = "0.0.1"
+version = "0.1.0"
 description = "OAuth Login for Gradio"
 requires-python = ">=3.8"
 readme = "README.md"
