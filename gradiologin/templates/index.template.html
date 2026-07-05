@@ -1,148 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Sign in</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</link>
 <style>
-body {
-  margin: 24px;
-  align-items: center;
-}
+  :root {
+    --bg: #f3f4f6;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #d1d5db;
+    --hover: #f9fafb;
+    --shadow: 0 1px 3px rgba(0, 0, 0, .08), 0 8px 24px rgba(0, 0, 0, .06);
+  }
 
-a {
-  text-decoration: none;
-  color: #000000;
-}
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111827;
+      --card-bg: #1f2937;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #4b5563;
+      --hover: #374151;
+      --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .3);
+    }
+  }
 
-.buttons {
-  margin: auto;
-  width: 50%;
-  align-items: center;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: 100%;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-.gsi-material-button {
-  margin-bottom: 10px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -webkit-appearance: none;
-  background-color: WHITE;
-  background-image: none;
-  border: 1px solid #747775;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  color: #1f1f1f;
-  cursor: pointer;
-  font-family: 'Roboto', arial, sans-serif;
-  font-size: 14px;
-  height: 40px;
-  letter-spacing: 0.25px;
-  outline: none;
-  overflow: hidden;
-  padding: 0 18px;
-  position: relative;
-  text-align: center;
-  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
-  transition: background-color .218s, border-color .218s, box-shadow .218s;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: auto;
-  max-width: 400px;
-  min-width: min-content;
-}
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
 
-.gsi-material-button .gsi-material-button-icon {
-  height: 20px;
-  margin-right: 12px;
-  min-width: 20px;
-  width: 20px;
-}
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 380px;
+    margin: 24px;
+    text-align: center;
+  }
 
-.gsi-material-button .gsi-material-button-content-wrapper {
-  -webkit-align-items: center;
-  align-items: center;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  position: relative;
-  width: 100%;
-}
+  .card h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
 
-.gsi-material-button .gsi-material-button-contents {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  font-family: 'Roboto', arial, sans-serif;
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: top;
-}
+  .card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 28px;
+  }
 
-.gsi-material-button .gsi-material-button-state {
-  -webkit-transition: opacity .218s;
-  transition: opacity .218s;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
+  .provider-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color .15s ease, box-shadow .15s ease;
+  }
 
-.gsi-material-button:disabled {
-  cursor: default;
-  background-color: #ffffff61;
-  border-color: #1f1f1f1f;
-}
+  .provider-button:hover {
+    background: var(--hover);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+  }
 
-.gsi-material-button:disabled .gsi-material-button-contents {
-  opacity: 38%;
-}
-
-.gsi-material-button:disabled .gsi-material-button-icon {
-  opacity: 38%;
-}
-
-.gsi-material-button:not(:disabled):active .gsi-material-button-state, 
-.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
-  background-color: #303030;
-  opacity: 12%;
-}
-
-.gsi-material-button:not(:disabled):hover {
-  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
-}
-
-.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
-  background-color: #303030;
-  opacity: 8%;
-}
-
+  .provider-button i {
+    font-size: 18px;
+  }
 </style>
 </head>
-
 <body>
-<div class="buttons">
-{% for provider in providers %}
-<button class="gsi-material-button">
-    <a class="gsi-material-button-content-wrapper" href="/login/{{ provider.name }}">
-    <span class="gsi-material-button-contents">
-    {% if provider.icon %}
-    <i style="margin-right: 6px;"  class="fa-brands fa-{{ provider.icon }}"></i>
-    {% endif %}
-    Sign in with {{ provider.name|capitalize }}</span>
-  </a>
-</button>
-{% endfor %}
-</div>
+  <main class="card">
+    <h1>Welcome</h1>
+    <p>Sign in to continue</p>
+    {% for provider in providers %}
+    <a class="provider-button" href="/login/{{ provider.name }}">
+      {% if provider.icon %}<i class="fa-brands fa-{{ provider.icon }}" aria-hidden="true"></i>{% endif %}
+      Sign in with {{ provider.name|capitalize }}
+    </a>
+    {% endfor %}
+  </main>
 </body>
+</html>

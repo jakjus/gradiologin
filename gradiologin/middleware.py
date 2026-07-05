@@ -1,22 +1,32 @@
+"""HTTP middleware that gates every route behind a login session."""
+
+from __future__ import annotations
+
+from typing import Iterable
+
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
+# Routes that must stay reachable without a session, otherwise
+# nobody could ever log in (or out).
+AUTH_PREFIXES = ("/login", "/auth", "/logout")
 
-def add_middleware_redirect(app, app_route):
+
+def add_auth_middleware(app, public_paths: Iterable[str] = ()) -> None:
+    """Redirect unauthenticated requests to ``/login``.
+
+    Every path is protected except the built-in auth routes and any
+    prefixes listed in ``public_paths``.
+    """
+    public = tuple(public_paths)
+
     @app.middleware("http")
     async def check_authentication(request: Request, call_next):
-        if request.url.path.startswith('/login') or request.url.path.startswith('/auth'):
-            # Skip authentication check for login and authentication routes
+        path = request.url.path
+        if path.startswith(AUTH_PREFIXES) or (public and path.startswith(public)):
             return await call_next(request)
 
-        if request.url.path==f'{app_route}/api/predict' or request.url.path==f'{app_route}/reset':
-            return await call_next(request)
-
-        user = request.session.get("user")
-        if not user:
-
-            # User is not logged in, redirect to login page
+        if not request.session.get("user"):
             return RedirectResponse(url="/login")
 
         return await call_next(request)
-
